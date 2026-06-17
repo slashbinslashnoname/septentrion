@@ -1,6 +1,6 @@
 {
   "name": "septentrion",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A desktop Git client — workspaces, diffs, issues & pull requests",
   "main": "./out/main/index.js",
   "author": "",
