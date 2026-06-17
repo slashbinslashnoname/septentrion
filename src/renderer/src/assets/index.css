@@ -1,0 +1,320 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 5.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 5.5%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 13%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 64% 42%;
+    --success-foreground: 0 0% 98%;
+    --border: 240 3.7% 16%;
+    --input: 240 3.7% 18%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-border;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/40;
+  }
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+/* ---- highlight.js syntax tokens (theme-aware) ---- */
+.hljs {
+  color: hsl(var(--foreground));
+  background: transparent;
+}
+.hljs-comment,
+.hljs-quote {
+  color: #8a8f98;
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-doctag,
+.hljs-type,
+.hljs-name,
+.hljs-strong {
+  color: #d6336c;
+}
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string {
+  color: #2f9e44;
+}
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-template-variable,
+.hljs-variable {
+  color: #e8590c;
+}
+.hljs-title,
+.hljs-built_in,
+.hljs-function .hljs-title,
+.hljs-class .hljs-title {
+  color: #1971c2;
+}
+.hljs-attr,
+.hljs-property,
+.hljs-params,
+.hljs-template-tag {
+  color: #9c36b5;
+}
+.hljs-meta,
+.hljs-tag,
+.hljs-punctuation {
+  color: #868e96;
+}
+.hljs-deletion {
+  color: #e03131;
+}
+
+.dark .hljs-comment,
+.dark .hljs-quote {
+  color: #6b7280;
+}
+.dark .hljs-keyword,
+.dark .hljs-selector-tag,
+.dark .hljs-literal,
+.dark .hljs-section,
+.dark .hljs-doctag,
+.dark .hljs-type,
+.dark .hljs-name,
+.dark .hljs-strong {
+  color: #ff7b9c;
+}
+.dark .hljs-string,
+.dark .hljs-regexp,
+.dark .hljs-addition,
+.dark .hljs-attribute,
+.dark .hljs-meta .hljs-string {
+  color: #8ce99a;
+}
+.dark .hljs-number,
+.dark .hljs-symbol,
+.dark .hljs-bullet,
+.dark .hljs-link,
+.dark .hljs-template-variable,
+.dark .hljs-variable {
+  color: #ffc078;
+}
+.dark .hljs-title,
+.dark .hljs-built_in,
+.dark .hljs-function .hljs-title,
+.dark .hljs-class .hljs-title {
+  color: #74c0fc;
+}
+.dark .hljs-attr,
+.dark .hljs-property,
+.dark .hljs-params,
+.dark .hljs-template-tag {
+  color: #e599f7;
+}
+.dark .hljs-meta,
+.dark .hljs-tag,
+.dark .hljs-punctuation {
+  color: #adb5bd;
+}
+.dark .hljs-deletion {
+  color: #ff8787;
+}
+
+/* ---- rendered markdown (issue/PR bodies & comments) ---- */
+.markdown {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  word-break: break-word;
+}
+.markdown > *:first-child {
+  margin-top: 0;
+}
+.markdown > *:last-child {
+  margin-bottom: 0;
+}
+.markdown p,
+.markdown ul,
+.markdown ol,
+.markdown blockquote,
+.markdown pre,
+.markdown table {
+  margin: 0.5rem 0;
+}
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.markdown h1 {
+  font-size: 1.3em;
+}
+.markdown h2 {
+  font-size: 1.15em;
+}
+.markdown h3 {
+  font-size: 1.05em;
+}
+.markdown a {
+  color: hsl(217 91% 60%);
+  text-decoration: none;
+}
+.markdown a:hover {
+  text-decoration: underline;
+}
+.markdown img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 0.25rem 0;
+}
+.markdown ul,
+.markdown ol {
+  padding-left: 1.4rem;
+}
+.markdown ul {
+  list-style: disc;
+}
+.markdown ol {
+  list-style: decimal;
+}
+.markdown li {
+  margin: 0.15rem 0;
+}
+.markdown code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  background: hsl(var(--muted));
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+.markdown pre {
+  background: hsl(var(--muted));
+  padding: 0.75rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+.markdown pre code {
+  background: transparent;
+  padding: 0;
+}
+.markdown blockquote {
+  border-left: 3px solid hsl(var(--border));
+  padding-left: 0.75rem;
+  color: hsl(var(--muted-foreground));
+}
+.markdown table {
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+}
+.markdown th,
+.markdown td {
+  border: 1px solid hsl(var(--border));
+  padding: 0.3rem 0.6rem;
+}
+.markdown hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border));
+  margin: 0.75rem 0;
+}
+.markdown input[type='checkbox'] {
+  margin-right: 0.4rem;
+}
+
+/* transparency backdrop behind previewed images */
+.checkerboard {
+  background-color: hsl(var(--muted));
+  background-image:
+    linear-gradient(45deg, hsl(var(--border)) 25%, transparent 25%),
+    linear-gradient(-45deg, hsl(var(--border)) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, hsl(var(--border)) 75%),
+    linear-gradient(-45deg, transparent 75%, hsl(var(--border)) 75%);
+  background-size: 20px 20px;
+  background-position:
+    0 0,
+    0 10px,
+    10px -10px,
+    -10px 0px;
+}
+
+/* draggable title bar region for the frameless macOS window */
+.drag {
+  -webkit-app-region: drag;
+}
+.no-drag {
+  -webkit-app-region: no-drag;
+}

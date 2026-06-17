@@ -1,0 +1,28 @@
+appId: com.septentrion.app
+productName: Septentrion
+directories:
+  buildResources: build
+  output: dist
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!electron.vite.config.{js,ts,mjs,cjs}'
+  - '!{.eslintrc,.prettierrc,tsconfig.json,tsconfig.*.json}'
+publish:
+  provider: github
+  owner: slashbinslashnoname
+  repo: septentrion
+mac:
+  category: public.app-category.developer-tools
+  # No signing certificate in CI — produce unsigned artifacts.
+  identity: null
+  target:
+    - dmg
+    - zip
+win:
+  target:
+    - nsis
+linux:
+  target:
+    - AppImage
+  category: Development
