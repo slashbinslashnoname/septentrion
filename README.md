@@ -1,6 +1,19 @@
-# ✦ Septentrion
+<p align="center">
+  <img src="assets/logo.png" alt="Septentrion" width="180" />
+</p>
 
-A desktop **Git client** built with **electron-vite + React + TypeScript + Tailwind + shadcn/ui**.
+<h1 align="center">Septentrion</h1>
+
+<p align="center">
+  A desktop <strong>Git client</strong> — workspaces, diffs, issues &amp; pull requests, all in one place.
+</p>
+
+<p align="center">
+  Built with <strong>electron-vite · React · TypeScript · Tailwind · shadcn/ui</strong>
+</p>
+
+---
+
 Manage workspaces, review diffs and code, browse history, and work GitHub issues &
 pull requests — including reading and posting comments — without leaving the app.
 
