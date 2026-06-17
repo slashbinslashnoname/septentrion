@@ -5,6 +5,7 @@ import { Toaster } from '@/components/Toaster'
 import { TitleBar } from '@/components/TitleBar'
 import { Sidebar } from '@/components/Sidebar'
 import { SearchPalette } from '@/components/SearchPalette'
+import { UpdateBanner } from '@/components/UpdateBanner'
 import { WelcomeView } from '@/views/WelcomeView'
 import { ChangesView } from '@/views/ChangesView'
 import { HistoryView } from '@/views/HistoryView'
@@ -58,6 +59,7 @@ export default function App(): React.JSX.Element {
       <TooltipProvider delayDuration={300}>
         <div className="flex h-full flex-col">
           <TitleBar />
+          <UpdateBanner />
           <Workspace />
         </div>
         <SearchPalette />

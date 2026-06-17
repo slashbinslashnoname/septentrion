@@ -48,7 +48,11 @@ export const IPC = {
   // settings
   getSettings: 'settings:get',
   setSettings: 'settings:set',
-  markSeen: 'notif:markSeen'
+  markSeen: 'notif:markSeen',
+  // auto-update
+  updateStatus: 'update:status',
+  updateCheck: 'update:check',
+  updateInstall: 'update:install'
 } as const
 
 export type IpcChannel = (typeof IPC)[keyof typeof IPC]

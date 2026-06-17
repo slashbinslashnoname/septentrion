@@ -372,7 +372,10 @@ export function useApi(): {
         toast({ title: errTitle, description: res.error, variant: 'error' })
         return undefined
       }
-      return res.data
+      // Void operations (checkout, commit, stage…) resolve with no data; return
+      // a defined sentinel so callers can distinguish success from failure with
+      // `result !== undefined`.
+      return (res.data === undefined ? (true as unknown as T) : res.data)
     },
     [toast]
   )

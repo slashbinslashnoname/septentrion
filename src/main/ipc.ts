@@ -5,6 +5,7 @@ import * as G from './git'
 import * as GH from './github'
 import * as B from './browser'
 import * as S from './search'
+import { checkForUpdates, quitAndInstall } from './updater'
 import { addRecentRepo, markSeen, readSettings, writeSettings } from './settings'
 
 /** Wrap a handler so every reply is a uniform { ok, data | error }. */
@@ -118,4 +119,8 @@ export function registerIpc(getWindow: () => BrowserWindow | null): void {
   handle(IPC.markSeen, (repoKey: string, entries: Record<string, string>) =>
     markSeen(repoKey, entries)
   )
+
+  // ---- auto-update ----
+  handle(IPC.updateCheck, () => checkForUpdates())
+  handle(IPC.updateInstall, () => quitAndInstall())
 }

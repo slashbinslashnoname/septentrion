@@ -204,3 +204,11 @@ export interface Settings {
   /** repoKey → ("issue:123" | "pull:45") → updatedAt last seen by the user */
   seen: Record<string, Record<string, string>>
 }
+
+export type UpdateStatus =
+  | { state: 'checking' }
+  | { state: 'available'; version: string }
+  | { state: 'none' }
+  | { state: 'downloading'; percent: number }
+  | { state: 'ready'; version: string }
+  | { state: 'error'; message: string }

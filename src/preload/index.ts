@@ -18,6 +18,7 @@ import type {
   SearchFileResult,
   Settings,
   StatusResult,
+  UpdateStatus,
   Worktree
 } from '../shared/types'
 
@@ -86,7 +87,17 @@ const api = {
   getSettings: () => invoke<Settings>(IPC.getSettings),
   setSettings: (patch: Partial<Settings>) => invoke<Settings>(IPC.setSettings, patch),
   markSeen: (repoKey: string, entries: Record<string, string>) =>
-    invoke<Settings>(IPC.markSeen, repoKey, entries)
+    invoke<Settings>(IPC.markSeen, repoKey, entries),
+  // auto-update
+  checkUpdate: () => invoke<void>(IPC.updateCheck),
+  installUpdate: () => invoke<void>(IPC.updateInstall),
+  onUpdateStatus: (cb: (status: UpdateStatus) => void) => {
+    const listener = (_e: unknown, payload: UpdateStatus): void => cb(payload)
+    ipcRenderer.on(IPC.updateStatus, listener)
+    return () => {
+      ipcRenderer.removeListener(IPC.updateStatus, listener)
+    }
+  }
 }
 
 export type SeptentrionApi = typeof api
