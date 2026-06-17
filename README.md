@@ -76,6 +76,25 @@ Artifacts are unsigned (no Apple/Windows certificates configured). To sign,
 add the usual electron-builder secrets (`CSC_LINK`, `CSC_KEY_PASSWORD`, …) and
 remove `identity: null` / `CSC_IDENTITY_AUTO_DISCOVERY: false`.
 
+### Installing on macOS
+
+The macOS build is **ad-hoc signed but not notarized** (no paid Apple Developer
+account). On first launch macOS will say the developer can't be verified:
+
+- **Right-click the app → Open → Open**, or
+- System Settings → Privacy & Security → "Open Anyway".
+
+If you ever see *"Septentrion is damaged and can't be opened"* (older quarantine
+state), clear the quarantine flag once:
+
+```bash
+xattr -cr /Applications/Septentrion.app
+```
+
+Full notarization (zero prompts) requires an Apple Developer ID — add
+`APPLE_ID` / `APPLE_APP_SPECIFIC_PASSWORD` / `APPLE_TEAM_ID` secrets and a
+`notarize` config to enable it.
+
 ## Project layout
 
 ```

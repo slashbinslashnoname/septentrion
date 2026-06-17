@@ -3,6 +3,8 @@ productName: Septentrion
 directories:
   buildResources: build
   output: dist
+# Ad-hoc sign the mac app so it isn't reported as "damaged" on Apple Silicon.
+afterPack: build/afterPack.cjs
 files:
   - '!**/.vscode/*'
   - '!src/*'
