@@ -12,6 +12,8 @@ publish:
   provider: github
   owner: slashbinslashnoname
   repo: septentrion
+  # Publish a real release on tag (electron-builder defaults to a draft).
+  releaseType: release
 mac:
   category: public.app-category.developer-tools
   # No signing certificate in CI — produce unsigned artifacts.
